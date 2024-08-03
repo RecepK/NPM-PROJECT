@@ -1,4 +1,5 @@
 import express from 'express';
+import connectDB from './config/db.js';
 
 const app = express();
 const port = 3000;
@@ -19,6 +20,12 @@ app.post("/", (req, res) => {
         .json(req.body);
 })
 
-app.listen(port, () => {
-    console.log(`Server port: ${port}`);
-});
+try {
+    await connectDB();
+
+    app.listen(port, () => {
+        console.log(`Server port: ${port}`);
+    });
+} catch (error) {
+    process.exit(1);
+}
