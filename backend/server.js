@@ -1,5 +1,6 @@
 import express from 'express';
 import connectDB from './config/db.js';
+import authRoute from './routes/AuthRoute.js'
 
 const app = express();
 const port = 3000;
@@ -19,6 +20,9 @@ app.post("/", (req, res) => {
         .status(201)
         .json(req.body);
 })
+
+
+app.use("/api/v1/auth/", authRoute);
 
 try {
     await connectDB();
