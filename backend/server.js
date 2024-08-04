@@ -2,6 +2,7 @@ import express from 'express';
 import connectDB from './config/db.js';
 import baseRoute from './routes/BaseRoute.js'
 import authRoute from './routes/AuthRoute.js'
+import bookRoute from './routes/BookRoute.js'
 
 const path = '/api/v1';
 const app = express();
@@ -10,6 +11,9 @@ app.use(express.json());
 
 app.use("/", baseRoute);
 app.use(path + "/auth/", authRoute);
+app.use(path + "/data/", bookRoute);
+
+
 
 try {
     await connectDB();
