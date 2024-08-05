@@ -61,7 +61,34 @@ const getBook = async (req, res) => {
             title
         });
 
-        console.log(book);
+        if (!book) {
+            return res
+                .status(400)
+                .json({
+                    error: 'Book not exist.'
+                });
+        }
+
+        return res
+            .status(201)
+            .json(book);
+    } catch (error) {
+        return res
+            .status(500)
+            .json({
+                error: 'Error.'
+            });
+    }
+};
+
+const getABooks = async (req, res) => {
+    try {
+        const {
+            id
+        } = req.body;
+        const book = await Book.findOne({
+            id
+        });
 
         if (!book) {
             return res
@@ -86,5 +113,6 @@ const getBook = async (req, res) => {
 export {
     createBook,
     getBooks,
-    getBook
+    getBook,
+    getABooks
 }

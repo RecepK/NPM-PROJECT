@@ -7,6 +7,9 @@ router.route("/")
     .get(controller.getBooks)
     .post(controller.getBook);
 
+router.route("/data/:id")
+    .get(controller.getABooks);
+
 router.route("/create")
     .post(controller.createBook);
 

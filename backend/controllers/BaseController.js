@@ -18,8 +18,20 @@ const postReq = async (req, res) => {
         });
 }
 
+const getData = async (req, res) => {
+    const data = ["deneme", "deneme 2", "deneme 3"];
+
+    return res
+        .status(201)
+        .json({
+            message: "message",
+            data: data
+        });
+}
+
 
 export {
     getReq,
-    postReq
+    postReq,
+    getData
 }

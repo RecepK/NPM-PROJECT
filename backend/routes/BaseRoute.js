@@ -8,4 +8,8 @@ router
     .get(controller.getReq)
     .post(controller.postReq);
 
+router
+    .route("/data")
+    .get(controller.getData);
+
 export default router;
